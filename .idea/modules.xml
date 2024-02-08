@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectModuleManager">
+  <component name="ModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ISPPROVIDER.iml" filepath="$PROJECT_DIR$/ISPPROVIDER.iml" />
+      <module fileurl="file://$PROJECT_DIR$/YOUR_MODULE.iml" filepath="$PROJECT_DIR$/YOUR_MODULE.iml" />
     </modules>
   </component>
 </project>
+
