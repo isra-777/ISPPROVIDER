@@ -1,61 +1,49 @@
-public class BillCalculator {
+public class ExpenseCalculator {
 
-    public Bill calculateBill(Customer customer) {
-        TariffPlan plan = customer.getPlan();
+    public Expense calculateExpenses(Person person) {
+        SubscriptionPlan plan = person.getSubscriptionPlan();
         double preTaxAmount;
 
         switch (plan) {
-            case A:
-                preTaxAmount = calculatePlanA(customer);
+            case BASIC:
+                preTaxAmount = calculateBasicExpenses(person);
                 break;
-            case B:
-                preTaxAmount = calculatePlanB(customer);
+            case STANDARD:
+                preTaxAmount = calculateStandardExpenses(person);
                 break;
-            case C:
-                preTaxAmount = calculatePlanC(customer);
-                break;
-            case D:
-                preTaxAmount = calculatePlanD(customer);
-                break;
-            case E:
-                preTaxAmount = plan.getFixedMonthlyPrice(); // Fixed price for unlimited everything
+            case PREMIUM:
+                preTaxAmount = calculatePremiumExpenses(person);
                 break;
             default:
-                throw new IllegalArgumentException("Unknown Tariff Plan");
+                throw new IllegalArgumentException("Unknown Subscription Plan");
         }
 
-        return new Bill(preTaxAmount);
+        return new Expense(preTaxAmount);
     }
 
-    private double calculatePlanA(Customer customer) {
-        return customer.getCallMinutes() * 6 + // 6 Lek per call minute
-                customer.getSmsCount() * 2 +    // 2 Lek per SMS
-                customer.getInternetMb() * 3;   // 3 Lek per MB
+    private double calculateBasicExpenses(Person person) {
+        return person.getCallMinutes() * 5 +            // 5 Lek per call minute
+               person.getTextMessages() * 1.5 +         // 1.5 Lek per text message
+               person.getDataUsageMb() * 2.5;          // 2.5 Lek per MB
     }
 
-    private double calculatePlanB(Customer customer) {
-        double total = 700; // Fixed price
-        // Additional usage charges if customer exceeds the included amounts
-        if (customer.getCallMinutes() > 200) {
-            total += (customer.getCallMinutes() - 200) * 6;
+    private double calculateStandardExpenses(Person person) {
+        double total = 500;  // Fixed price
+        // Additional charges if person exceeds the included amounts
+        if (person.getCallMinutes() > 150) {
+            total += (person.getCallMinutes() - 150) * 5;
         }
-        if (customer.getSmsCount() > 200) {
-            total += (customer.getSmsCount() - 200) * 2;
+        if (person.getTextMessages() > 100) {
+            total += (person.getTextMessages() - 100) * 1.5;
         }
-        if (customer.getInternetMb() > 2000) {
-            total += (customer.getInternetMb() - 2000) * 3;
+        if (person.getDataUsageMb() > 1000) {
+            total += (person.getDataUsageMb() - 1000) * 2.5;
         }
         return total;
     }
 
-    private double calculatePlanC(Customer customer) {
-        return 800 + // Fixed price for unlimited calls and SMS
-                customer.getInternetMb() * 1.5; // 1.5 Lek per MB
-    }
-
-    private double calculatePlanD(Customer customer) {
-        return 1000 + // Fixed price for unlimited internet
-                customer.getCallMinutes() * 4 + // 4 Lek per call minute
-                customer.getSmsCount() * 1.5;   // 1.5 Lek per SMS
+    private double calculatePremiumExpenses(Person person) {
+        return 800 +                                     // Fixed price for premium plan
+               person.getDataUsageMb() * 1.2;            // 1.2 Lek per MB
     }
 }
