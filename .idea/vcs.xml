@@ -2,7 +2,7 @@
 <project version="4">
   <component name="VcsDirMapp.">
   
-    <mapping directory="$ANOTHER_DIR$" vcs="Mercurial" />
+    <mapping directory="$ASSIGN_DIR$" vcs="Mercurial" />
   </component>
 </project>
 
