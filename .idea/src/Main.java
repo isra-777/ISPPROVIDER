@@ -1,11 +1,11 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class BillingSystem {
 
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.out.println("Usage: Main <input file>");
+            System.out.println("Usage: BillingSystem <input file>");
             return;
         }
 
@@ -15,7 +15,7 @@ public class Main {
         try {
             List<Customer> customers = readCustomersFromFile(inputFilePath);
             List<Bill> bills = calculateBills(customers);
-            bills.sort(Comparator.comparingDouble(Bill::getWithTaxAmount));
+            sortBillsByAmount(bills);
             writeBillsToFile(bills, outputFilePath);
             printBillTotals(bills);
         } catch (IOException e) {
@@ -29,19 +29,27 @@ public class Main {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(", ");
-                if (parts.length != 5) {
-                    throw new IOException("Invalid line format: " + line);
-                }
-                String id = parts[0];
-                int callMinutes = Integer.parseInt(parts[1]);
-                int smsCount = Integer.parseInt(parts[2]);
-                int internetMb = Integer.parseInt(parts[3]);
-                TariffPlan plan = TariffPlan.valueOf(parts[4]);
-
-                customers.add(new Customer(id, callMinutes, smsCount, internetMb, plan));
+                validateInputLine(parts, line);
+                customers.add(createCustomerFromInput(parts));
             }
         }
         return customers;
+    }
+
+    private static void validateInputLine(String[] parts, String line) throws IOException {
+        if (parts.length != 5) {
+            throw new IOException("Invalid line format: " + line);
+        }
+    }
+
+    private static Customer createCustomerFromInput(String[] parts) {
+        String id = parts[0];
+        int callMinutes = Integer.parseInt(parts[1]);
+        int smsCount = Integer.parseInt(parts[2]);
+        int internetMb = Integer.parseInt(parts[3]);
+        TariffPlan plan = TariffPlan.valueOf(parts[4]);
+
+        return new Customer(id, callMinutes, smsCount, internetMb, plan);
     }
 
     private static List<Bill> calculateBills(List<Customer> customers) {
@@ -51,6 +59,10 @@ public class Main {
             bills.add(calculator.calculateBill(customer));
         }
         return bills;
+    }
+
+    private static void sortBillsByAmount(List<Bill> bills) {
+        bills.sort(Comparator.comparingDouble(Bill::getWithTaxAmount));
     }
 
     private static void writeBillsToFile(List<Bill> bills, String fileName) throws IOException {
