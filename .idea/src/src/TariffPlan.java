@@ -5,25 +5,25 @@ public enum TariffPlan {
     D(3.5, 1, -1, 1200, -1, -1), // 1200 Lek for unlimited internet, 3.5 Lek per call minute, 1 Lek per SMS
     E(-1, -1, -1, 1700, -1, -1); // 1700 Lek for unlimited everything
 
-    private final double callRate;
+    private final double call_rate;
     private final double smsRate;
-    private final double internetRate;
-    private final double fixedMonthlyPrice;
-    private final int includedMinutes;
+    private final double internet_Rate;
+    private final double fixed_MonthlyPrice;
+    private final int included_Minutes;
     private final int includedInternetMB;
 
-    TariffPlan(double callRate, double smsRate, double internetRate,
-               double fixedMonthlyPrice, int includedMinutes, int includedInternetMB) {
-        this.callRate = callRate;
+    TariffPlan(double callRate, double smsRate, double internet_Rate,
+               double fixed_MonthlyPrice, int includedMinutes, int includedInternetMB) {
+        this.callRate = call_Rate;
         this.smsRate = smsRate;
-        this.internetRate = internetRate;
-        this.fixedMonthlyPrice = fixedMonthlyPrice;
+        this.internetRate = internet_Rate;
+        this.fixed_MonthlyPrice = fixed_MonthlyPrice;
         this.includedMinutes = includedMinutes;
         this.includedInternetMB = includedInternetMB;
     }
 
-    public double getCallRate() {
-        return callRate;
+    public double getCall_Rate() {
+        return call_Rate;
     }
 
     public double getSmsRate() {
@@ -34,8 +34,8 @@ public enum TariffPlan {
         return internetRate;
     }
 
-    public double getFixedMonthlyPrice() {
-        return fixedMonthlyPrice;
+    public double getFixed_MonthlyPrice() {
+        return fixed_MonthlyPrice;
     }
 
     public int getIncludedMinutes() {
