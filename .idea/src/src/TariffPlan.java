@@ -1,9 +1,9 @@
 public enum TariffPlan {
-    A(6, 2, 3, -1, -1, -1), // 6 Lek per call minute, 2 Lek per SMS, 3 Lek per MB
-    B(6, 2, 3, 700, 200, 2000), // 700 Lek fixed for 200 call minutes, 200 SMSs, and 2000MB
-    C(-1, -1, 1.5, 800, -1, -1), // 800 Lek for unlimited calls and SMS, 1.5 Lek per MB
-    D(4, 1.5, -1, 1000, -1, -1), // 1000 Lek for unlimited internet, 4 Lek per call minute, 1.5 Lek per SMS
-    E(-1, -1, -1, 1500, -1, -1); // 1500 Lek for unlimited everything
+    A(5, 1.5, 2, -1, -1, -1), // 5 Lek per call minute, 1.5 Lek per SMS, 2 Lek per MB
+    B(7, 2.5, 3, 600, 150, 1800), // 600 Lek fixed for 150 call minutes, 200 SMSs, and 1800MB
+    C(-1, -1, 2, 900, -1, -1), // 900 Lek for unlimited calls, SMS, and 2 Lek per MB
+    D(3.5, 1, -1, 1200, -1, -1), // 1200 Lek for unlimited internet, 3.5 Lek per call minute, 1 Lek per SMS
+    E(-1, -1, -1, 1700, -1, -1); // 1700 Lek for unlimited everything
 
     private final double callRate;
     private final double smsRate;
