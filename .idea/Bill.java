@@ -1,37 +1,37 @@
-public class Bill {
-    private double preTaxAmount;
-    private double tax;
-    private double withTaxAmount;
+public class Purchase {
+    private double subtotal;
+    private double salesTax;
+    private double totalAmount;
 
-    public Bill(double preTaxAmount) {
-        this.preTaxAmount = preTaxAmount;
-        this.tax = calculateTax(preTaxAmount);
-        this.withTaxAmount = preTaxAmount + tax;
+    public Purchase(double subtotal) {
+        this.subtotal = subtotal;
+        this.salesTax = calculateSalesTax(subtotal);
+        this.totalAmount = subtotal + salesTax;
     }
 
-    private double calculateTax(double amount) {
-        return amount < 2500 ? amount * 0.15 : amount * 0.20;
+    private double calculateSalesTax(double amount) {
+        return amount < 2500 ? amount * 0.1 : amount * 0.15;
     }
 
     // Getters
-    public double getPreTaxAmount() {
-        return preTaxAmount;
+    public double getSubtotal() {
+        return subtotal;
     }
 
-    public double getTax() {
-        return tax;
+    public double getSalesTax() {
+        return salesTax;
     }
 
-    public double getWithTaxAmount() {
-        return withTaxAmount;
+    public double getTotalAmount() {
+        return totalAmount;
     }
 
     @Override
     public String toString() {
-        return "Bill{" +
-                "preTaxAmount=" + preTaxAmount +
-                ", tax=" + tax +
-                ", withTaxAmount=" + withTaxAmount +
+        return "Purchase{" +
+                "subtotal=" + subtotal +
+                ", salesTax=" + salesTax +
+                ", totalAmount=" + totalAmount +
                 '}';
     }
 }
