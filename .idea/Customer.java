@@ -1,67 +1,68 @@
-public class Customer { private String id;
-    private int callMinutes;
-    private int smsCount;
-    private int internetMb;
-    private TariffPlan plan;
+public class Client {
+    private String identifier;
+    private int minutesSpent;
+    private int numberOfSMS;
+    private int dataUsageMb;
+    private TariffPlan selectedPlan;
 
-    public Customer(String id, int callMinutes, int smsCount, int internetMb, TariffPlan plan) {
-        this.id = id;
-        this.callMinutes = callMinutes;
-        this.smsCount = smsCount;
-        this.internetMb = internetMb;
-        this.plan = plan;
+    public Client(String identifier, int minutesSpent, int numberOfSMS, int dataUsageMb, TariffPlan selectedPlan) {
+        this.identifier = identifier;
+        this.minutesSpent = minutesSpent;
+        this.numberOfSMS = numberOfSMS;
+        this.dataUsageMb = dataUsageMb;
+        this.selectedPlan = selectedPlan;
     }
 
     // Getters
-    public String getId() {
-        return id;
+    public String getIdentifier() {
+        return identifier;
     }
 
-    public int getCallMinutes() {
-        return callMinutes;
+    public int getMinutesSpent() {
+        return minutesSpent;
     }
 
-    public int getSmsCount() {
-        return smsCount;
+    public int getNumberOfSMS() {
+        return numberOfSMS;
     }
 
-    public int getInternetMb() {
-        return internetMb;
+    public int getDataUsageMb() {
+        return dataUsageMb;
     }
 
-    public TariffPlan getPlan() {
-        return plan;
+    public TariffPlan getSelectedPlan() {
+        return selectedPlan;
     }
 
     // Setters
-    public void setId(String id) {
-        this.id = id;
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
 
-    public void setCallMinutes(int callMinutes) {
-        this.callMinutes = callMinutes;
+    public void setMinutesSpent(int minutesSpent) {
+        this.minutesSpent = minutesSpent;
     }
 
-    public void setSmsCount(int smsCount) {
-        this.smsCount = smsCount;
+    public void setNumberOfSMS(int numberOfSMS) {
+        this.numberOfSMS = numberOfSMS;
     }
 
-    public void setInternetMb(int internetMb) {
-        this.internetMb = internetMb;
+    public void setDataUsageMb(int dataUsageMb) {
+        this.dataUsageMb = dataUsageMb;
     }
 
-    public void setPlan(TariffPlan plan) {
-        this.plan = plan;
+    public void setSelectedPlan(TariffPlan selectedPlan) {
+        this.selectedPlan = selectedPlan;
     }
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "id='" + id + '\'' +
-                ", callMinutes=" + callMinutes +
-                ", smsCount=" + smsCount +
-                ", internetMb=" + internetMb +
-                ", plan=" + plan +
+        return "Client{" +
+                "identifier='" + identifier + '\'' +
+                ", minutesSpent=" + minutesSpent +
+                ", numberOfSMS=" + numberOfSMS +
+                ", dataUsageMb=" + dataUsageMb +
+                ", selectedPlan=" + selectedPlan +
                 '}';
     }
 }
